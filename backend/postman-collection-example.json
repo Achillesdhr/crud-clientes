@@ -1,0 +1,118 @@
+{
+  "name": "Projeto Lume API - JWT",
+  "description": "Coleção de endpoints da API com autenticação JWT",
+  "requests": [
+    {
+      "name": "1. Login",
+      "method": "POST",
+      "url": "http://localhost:8080/auth/login",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "email": "admin@exemplo.com",
+        "senha": "senha123"
+      },
+      "description": "Faz login e retorna o token JWT. Copie o token da resposta para usar nos outros endpoints."
+    },
+    {
+      "name": "2. Criar Usuário",
+      "method": "POST",
+      "url": "http://localhost:8080/usuario",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer {{TOKEN}}"
+      },
+      "body": {
+        "email": "novo@exemplo.com",
+        "senha": "senha123",
+        "role": "USER"
+      },
+      "description": "Cria um novo usuário. Requer token JWT."
+    },
+    {
+      "name": "3. Listar Usuários",
+      "method": "GET",
+      "url": "http://localhost:8080/usuario",
+      "headers": {
+        "Authorization": "Bearer {{TOKEN}}"
+      },
+      "description": "Lista todos os usuários. Requer token JWT."
+    },
+    {
+      "name": "4. Criar Cliente",
+      "method": "POST",
+      "url": "http://localhost:8080/clientes",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer {{TOKEN}}"
+      },
+      "body": {
+        "nome": "João Silva",
+        "cpf": "12345678901",
+        "logradouro": "Rua das Flores, 123",
+        "bairro": "Centro",
+        "cidade": "São Paulo",
+        "estado": "SP",
+        "cep": "01234567"
+      },
+      "description": "Cria um novo cliente. Requer token JWT."
+    },
+    {
+      "name": "5. Listar Clientes",
+      "method": "GET",
+      "url": "http://localhost:8080/clientes",
+      "headers": {
+        "Authorization": "Bearer {{TOKEN}}"
+      },
+      "description": "Lista todos os clientes. Requer token JWT."
+    },
+    {
+      "name": "6. Buscar Cliente por ID",
+      "method": "GET",
+      "url": "http://localhost:8080/clientes/1",
+      "headers": {
+        "Authorization": "Bearer {{TOKEN}}"
+      },
+      "description": "Busca um cliente específico pelo ID. Requer token JWT."
+    },
+    {
+      "name": "7. Atualizar Cliente",
+      "method": "PUT",
+      "url": "http://localhost:8080/clientes/1",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer {{TOKEN}}"
+      },
+      "body": {
+        "nome": "João Silva Atualizado",
+        "cpf": "12345678901",
+        "logradouro": "Rua das Rosas, 456",
+        "bairro": "Centro",
+        "cidade": "São Paulo",
+        "estado": "SP",
+        "cep": "01234567"
+      },
+      "description": "Atualiza um cliente existente. Requer token JWT."
+    },
+    {
+      "name": "8. Deletar Cliente",
+      "method": "DELETE",
+      "url": "http://localhost:8080/clientes/1",
+      "headers": {
+        "Authorization": "Bearer {{TOKEN}}"
+      },
+      "description": "Deleta um cliente. Requer token JWT."
+    }
+  ],
+  "variables": {
+    "TOKEN": "Cole aqui o token obtido no login"
+  },
+  "instructions": [
+    "1. Execute primeiro a requisição '1. Login' para obter o token",
+    "2. Copie o valor do campo 'token' da resposta",
+    "3. Substitua {{TOKEN}} nos headers das outras requisições pelo token copiado",
+    "4. O token expira em 1 hora, então faça login novamente se necessário"
+  ]
+}
+
